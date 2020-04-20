@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "allowJs": true,
+    "target": "ES5",
+    "module": "commonjs",
+    "pretty": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "es2015", "es2016", "es2017", "esnext"]
+  },
+  "include": ["src/**/*", "build/**/*", "webpack.config.ts"],
+  "exlucde": ["node_modules/**/*"]
+}
