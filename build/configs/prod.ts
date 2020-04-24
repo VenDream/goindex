@@ -1,41 +1,35 @@
 /**
  * Prod config
  * @author VenDream
- * @since 2020-4-20
+ * @since 2020-4-24
  */
 
-import path from 'path';
-import webpack from 'webpack';
+import webpackMerge from 'webpack-merge';
+import TerserPlugin from 'terser-webpack-plugin';
+
+import baseConfig from './base';
+import getPlugins from '../plugins';
 import getLoaders from '../loaders';
 
-const srcDir = path.resolve(__dirname, '../../src');
-const distDir = path.resolve(__dirname, '../../dist');
-
-const prodConfig: webpack.Configuration = {
+const prodConfig = webpackMerge(baseConfig, {
   mode: 'production',
-  name: 'goindex',
-  target: 'web',
-  entry: path.resolve(srcDir, 'index.ts'),
-  devtool: false,
-  output: {
-    path: distDir,
-    filename: 'worker.js',
-  },
-  resolve: {
-    modules: ['node_modules', srcDir],
-    extensions: ['.js', '.ts'],
-  },
   module: {
-    rules: getLoaders(true),
+    rules: getLoaders(false),
   },
-  plugins: [],
-  stats: {
-    maxModules: 0,
-    children: false,
-  },
+  plugins: getPlugins(false),
   optimization: {
     minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+    ],
   },
-};
+});
 
 export default prodConfig;

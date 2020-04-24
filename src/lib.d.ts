@@ -1,7 +1,7 @@
 /**
  * Typings
  * @author VenDream<yeshenxue@qq.com>
- * @since 2020-4-20
+ * @since 2020-4-24
  */
 
 declare namespace GoIndex {
@@ -21,6 +21,10 @@ declare namespace GoIndex {
     refreshToken: string;
     /** root dirs to mount */
     roots: GoIndex.DirConfig[];
+    /** GD auth */
+    gdAuth?: GDAuth;
+    /** show log output or not */
+    logger?: boolean;
   }
 
   /** Dir config  */
@@ -32,7 +36,14 @@ declare namespace GoIndex {
     /** password, empty to disable */
     pass: string;
   }
+
+  /** Google Drive auth data */
+  interface GDAuth {
+    /** expires */
+    expires: number;
+    /** accessToken */
+    accessToken: string;
+  }
 }
 
 declare let globalConfig: GoIndex.Config;
-declare function addEventListener(...args: any[]);

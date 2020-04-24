@@ -1,41 +1,23 @@
 /**
  * Dev config
  * @author VenDream
- * @since 2020-4-20
+ * @since 2020-4-24
  */
 
-import path from 'path';
-import webpack from 'webpack';
+import webpackMerge from 'webpack-merge';
+import baseConfig from './base';
+import getPlugins from '../plugins';
 import getLoaders from '../loaders';
 
-const srcDir = path.resolve(__dirname, '../../src');
-const distDir = path.resolve(__dirname, '../../dist');
-
-const devConfig: webpack.Configuration = {
+const devConfig = webpackMerge(baseConfig, {
   mode: 'development',
-  name: 'goindex',
-  target: 'web',
-  entry: path.resolve(srcDir, 'index.ts'),
-  devtool: false,
-  output: {
-    path: distDir,
-    filename: 'worker.js',
-  },
-  resolve: {
-    modules: ['node_modules', srcDir],
-    extensions: ['.js', '.ts'],
-  },
   module: {
     rules: getLoaders(true),
   },
-  plugins: [],
-  stats: {
-    maxModules: 0,
-    children: false,
-  },
+  plugins: getPlugins(true),
   optimization: {
     minimize: false,
   },
-};
+});
 
 export default devConfig;

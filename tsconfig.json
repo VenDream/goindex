@@ -5,7 +5,7 @@
       "*": ["src/*"]
     },
     "allowJs": true,
-    "target": "ES5",
+    "target": "ESNext",
     "module": "commonjs",
     "pretty": true,
     "moduleResolution": "node",
@@ -18,8 +18,13 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "es2015", "es2016", "es2017", "esnext"]
+    "lib": ["dom", "webworker", "es2015", "es2016", "es2017", "esnext"]
   },
-  "include": ["src/**/*", "build/**/*", "webpack.config.ts"],
+  "include": [
+    "src/**/*",
+    "build/**/*",
+    "webpack.config.dev.ts",
+    "webpack.config.prod.ts"
+  ],
   "exlucde": ["node_modules/**/*"]
 }

@@ -8,9 +8,13 @@ module.exports = function getBabelConfig(api) {
         {
           corejs: 3,
           loose: true,
-          debug: false,
+          debug: true,
           modules: false,
           useBuiltIns: 'usage',
+          exclude: [
+            '@babel/plugin-transform-regenerator',
+            '@babel/plugin-transform-async-to-generator',
+          ],
         },
       ],
     ],
@@ -20,6 +24,17 @@ module.exports = function getBabelConfig(api) {
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-modules-commonjs',
       '@babel/plugin-proposal-export-default-from',
+      // Uncomment the following lines to transform async/await to promise
+      // [
+      //   'module:fast-async',
+      //   {
+      //     spec: true,
+      //     compiler: {
+      //       promises: true,
+      //       generators: false,
+      //     },
+      //   },
+      // ],
     ],
   };
 };

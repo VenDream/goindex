@@ -11,7 +11,7 @@ export default function loader() {
         loader: 'babel-loader',
         options: {
           cwd: path.resolve(__dirname, '../../'),
-          cacheDirectory: true,
+          cacheDirectory: path.resolve(__dirname, '../../.cache'),
         },
       },
       {
